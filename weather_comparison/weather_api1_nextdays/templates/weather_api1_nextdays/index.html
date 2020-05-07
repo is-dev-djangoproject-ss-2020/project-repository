@@ -1,0 +1,217 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>What's the weather like?</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.6.2/css/bulma.css" />
+</head>
+<body>
+    <section class="hero is-primary">
+        <div class="hero-body">
+            <div class="container">
+                <h1 class="title">
+                    What's the weather like?
+                </h1>
+            </div>
+        </div>
+    </section>
+    <section class="section">
+        <div class="container">
+            <div class="columns">
+                <div class="column is-offset-4 is-4">
+                    <form method="POST">
+			{% csrf_token %}
+                        <div class="field has-addons">
+                            <div class="control is-expanded">
+                                {{ form.name }}
+                            </div>
+                            <div class="control">
+                                <button class="button is-info">
+                                    Add City Name
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+    Current weather
+    <section class="section">
+        <div class="container">
+            <div class="columns">
+                <div class="column is-offset-4 is-4">
+		    {% for k0 in weather_data_current %}
+                    <div class="box">
+                        <article class="media">
+                            <div class="media-left">
+                                <figure class="image is-50x50">
+                                    <img src="http://openweathermap.org/img/w/{{ k0.icon }}.png" alt="Image">
+                                </figure>
+                            </div>
+                            <div class="media-content">
+                                <div class="content">
+                                    <p>
+                                        <span class="title">{{ k0.city }} ({{ k0.countrycode }})</span>
+                                        <br>
+                                        <span class="subtitle">{{ k0.temperature }}° C</span>
+                                        <br> {{ k0.description }}
+                                        <br> Pressure: {{ k0.pressure }} hPa
+					<br> Humidity: {{ k0.humidity }}%
+					<br> UTC time: {{ k0.utc_time }}
+					<br> Local time: {{ k0.local_time }}
+                                    </p>
+                                </div>
+                            </div>
+                        </article>
+                    </div>
+		    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </section>
+    Tomorrow
+    <section class="section">
+        <div class="container">
+            <div class="columns">
+                <div class="column is-offset-4 is-4">
+		    {% for k1 in weather_data_plus1d %}
+                    <div class="box">
+                        <article class="media">
+                            <div class="media-left">
+                                <figure class="image is-50x50">
+                                    <img src="http://openweathermap.org/img/w/{{ k1.icon }}.png" alt="Image">
+                                </figure>
+                            </div>
+                            <div class="media-content">
+                                <div class="content">
+                                    <p>
+                                        <span class="title">{{ k1.city }} ({{ k1.countrycode }})</span>
+                                        <br>
+                                        <span class="subtitle">{{ k1.temperature }}° C</span>
+                                        <br> {{ k1.description }}
+                                        <br> Maximum temp.: {{ k1.max_temp }}° C
+					<br> Minimum temp.: {{ k1.min_temp }}° C
+                                        <br> Pressure: {{ k1.pressure }} hPa
+					<br> Humidity: {{ k1.humidity }}%
+                                    </p>
+                                </div>
+                            </div>
+                        </article>
+                    </div>
+		    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </section>
+    In 2 days
+    <section class="section">
+        <div class="container">
+            <div class="columns">
+                <div class="column is-offset-4 is-4">
+		    {% for k2 in weather_data_plus2d %}
+                    <div class="box">
+                        <article class="media">
+                            <div class="media-left">
+                                <figure class="image is-50x50">
+                                    <img src="http://openweathermap.org/img/w/{{ k2.icon }}.png" alt="Image">
+                                </figure>
+                            </div>
+                            <div class="media-content">
+                                <div class="content">
+                                    <p>
+                                        <span class="title">{{ k2.city }} ({{ k2.countrycode }})</span>
+                                        <br>
+                                        <span class="subtitle">{{ k2.temperature }}° C</span>
+                                        <br> {{ k2.description }}
+                                        <br> Maximum temp.: {{ k2.max_temp }}° C
+					<br> Minimum temp.: {{ k2.min_temp }}° C
+                                        <br> Pressure: {{ k2.pressure }} hPa
+					<br> Humidity: {{ k2.humidity }}%
+                                    </p>
+                                </div>
+                            </div>
+                        </article>
+                    </div>
+		    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </section>
+    In 3 days
+    <section class="section">
+        <div class="container">
+            <div class="columns">
+                <div class="column is-offset-4 is-4">
+		    {% for k3 in weather_data_plus3d %}
+                    <div class="box">
+                        <article class="media">
+                            <div class="media-left">
+                                <figure class="image is-50x50">
+                                    <img src="http://openweathermap.org/img/w/{{ k3.icon }}.png" alt="Image">
+                                </figure>
+                            </div>
+                            <div class="media-content">
+                                <div class="content">
+                                    <p>
+                                        <span class="title">{{ k3.city }} ({{ k3.countrycode }})</span>
+                                        <br>
+                                        <span class="subtitle">{{ k3.temperature }}° C</span>
+                                        <br> {{ k3.description }}
+                                        <br> Maximum temp.: {{ k3.max_temp }}° C
+					<br> Minimum temp.: {{ k3.min_temp }}° C
+                                        <br> Pressure: {{ k3.pressure }} hPa
+					<br> Humidity: {{ k3.humidity }}%
+                                    </p>
+                                </div>
+                            </div>
+                        </article>
+                    </div>
+		    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </section>
+    In 4 days
+    <section class="section">
+        <div class="container">
+            <div class="columns">
+                <div class="column is-offset-4 is-4">
+		    {% for k4 in weather_data_plus4d %}
+                    <div class="box">
+                        <article class="media">
+                            <div class="media-left">
+                                <figure class="image is-50x50">
+                                    <img src="http://openweathermap.org/img/w/{{ k4.icon }}.png" alt="Image">
+                                </figure>
+                            </div>
+                            <div class="media-content">
+                                <div class="content">
+                                    <p>
+                                        <span class="title">{{ k4.city }} ({{ k4.countrycode }})</span>
+                                        <br>
+                                        <span class="subtitle">{{ k4.temperature }}° C</span>
+                                        <br> {{ k4.description }}
+                                        <br> Maximum temp.: {{ k4.max_temp }}° C
+					<br> Minimum temp.: {{ k4.min_temp }}° C
+                                        <br> Pressure: {{ k4.pressure }} hPa
+					<br> Humidity: {{ k4.humidity }}%
+                                    </p>
+                                </div>
+                            </div>
+                        </article>
+                    </div>
+		    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </section>
+    <footer class="footer">
+    dedicated for introducing the comparison app
+    <br>
+    created by Jann Demond, Gramoz Sejfijaj and Mathias Schäfer
+    </footer>
+</body>
+</html>
