@@ -47,7 +47,7 @@
                         <article class="media">
                             <div class="media-left">
                                 <figure class="image is-50x50">
-                                    <img src="http://openweathermap.org/img/w/{{ k0.icon }}.png" alt="Image">
+                                    <img src="http://openweathermap.org/img/w/{{ k0.cIcon }}.png" alt="Image">
                                 </figure>
                             </div>
                             <div class="media-content">
@@ -55,12 +55,12 @@
                                     <p>
                                         <span class="title">{{ k0.city }} ({{ k0.countrycode }})</span>
                                         <br>
-                                        <span class="subtitle">{{ k0.temperature }}° C</span>
-                                        <br> {{ k0.description }}
-                                        <br> Pressure: {{ k0.pressure }} hPa
-					<br> Humidity: {{ k0.humidity }}%
-					<br> UTC time: {{ k0.utc_time }}
-					<br> Local time: {{ k0.local_time }}
+                                        <span class="subtitle">{{ k0.mTemp.iAvg }}° C</span>
+                                        <br> {{ k0.cName }}
+                                        <br> Pressure: {{ k0.mRain.iMin }} hPa
+					<br> Humidity: {{ k0.mRain.iMax }}%
+<!--					<br> UTC time: {{ k0.utc_time }}-->
+<!--					<br> Local time: {{ k0.local_time }}-->
                                     </p>
                                 </div>
                             </div>
