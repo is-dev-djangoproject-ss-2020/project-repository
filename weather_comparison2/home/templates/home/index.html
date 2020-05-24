@@ -1,0 +1,204 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>What's the weather like?</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.6.2/css/bulma.css" />
+</head>
+<body>
+    <section class="hero is-primary">
+        <div class="hero-body">
+            <div class="container">
+                <h1 class="title">
+                    What's the weather like?
+                </h1>
+                <h2 class="title">
+                    Landing page
+                </h2>
+            </div>
+        </div>
+    </section>
+    <section class="section">
+    Welcome to our WeatherComparison homepage!
+    <br>
+    This page is intended to provide an overview about various weather forecasts!
+    </section>
+
+    <section class="section">
+        <div class="container">
+            <div class="columns">
+                <div class="column is-offset-1 is-6">
+		Current weather for a city
+                </div>
+            </div>
+            <div class="columns">
+                <div class="column is-offset-2 is-10">
+                    <form method="POST">
+			{% csrf_token %}
+                        <div class="field has-addons">
+                            <div class="control">
+                                <button class="button is-info" style="background-color:orange">
+                                     <a href="{% url 'weather_api1:index' %}">Current weather</a>
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container">
+            <div class="columns">
+                <div class="column is-offset-1 is-6">
+		Weather forecast for a city (4 days)
+                </div>
+            </div>
+            <div class="columns">
+                <div class="column is-offset-2 is-10">
+                    <form method="POST">
+			{% csrf_token %}
+                        <div class="field has-addons">
+                            <div class="control">
+                                <button class="button is-info" style="background-color:orange">
+                                     <a href="{% url 'weather_api2:index' %}">OpenWeatherMap</a>
+                                </button>
+                                <button class="button is-info" style="background-color:orange">
+                                     <a href="{% url 'weather_api2:weatherbit' %}">weatherbit</a>
+                                </button>
+                                <button class="button is-info" style="background-color:orange">
+                                     <a href="{% url 'weather_api2:here' %}">here.com</a>
+                                </button>
+                                <button class="button is-info" style="background-color:orange">
+                                     <a href="{% url 'weather_api2:worldweatheronline' %}">WorldWeatherOnline</a>
+                                </button>
+                                <button class="button is-info" style="background-color:orange">
+                                     <a href="{% url 'weather_api2:all_on_one_page' %}">All providers</a>
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container">
+            <div class="columns">
+                <div class="column is-offset-1 is-6">
+		Weather forecast for a country's capital
+                </div>
+            </div>
+            <div class="columns">
+                <div class="column is-offset-2 is-10">
+                    <form method="POST">
+			{% csrf_token %}
+                        <div class="field has-addons">
+                            <div class="control">
+                                <button class="button is-info" style="background-color:orange">
+                                     <a href="{% url 'country_search:index' %}">Country search</a>
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container">
+            <div class="columns">
+                <div class="column is-offset-1 is-6">
+		Compare the current weather for various cities
+                </div>
+            </div>
+            <div class="columns">
+                <div class="column is-offset-2 is-10">
+                    <form method="POST">
+			{% csrf_token %}
+                        <div class="field has-addons">
+                            <div class="control">
+                                <button class="button is-info" style="background-color:orange">
+                                     <a href="{% url 'weather_cities:index' %}">OpenWeatherMap</a>
+                                </button>
+                                <button class="button is-info" style="background-color:orange">
+                                     <a href="{% url 'weather_cities:weatherbit' %}">Weatherbit</a>
+                                </button>
+                                <button class="button is-info" style="background-color:orange">
+                                     <a href="{% url 'weather_cities:here' %}">here.com</a>
+                                </button>
+                                <button class="button is-info" style="background-color:orange">
+                                     <a href="{% url 'weather_cities:worldweatheronline' %}">WorldWeatherOnline</a>
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container">
+            <div class="columns">
+                <div class="column is-offset-1 is-6">
+		Compare the forecasts for various cities
+                </div>
+            </div>
+            <div class="columns">
+                <div class="column is-offset-2 is-10">
+                    <form method="POST">
+			{% csrf_token %}
+                        <div class="field has-addons">
+                            <div class="control">
+                                <button class="button is-info" style="background-color:orange">
+                                     <a href="{% url 'weather_cities_forecast:index_forecast' %}">Compare forecasts</a>
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container">
+            <div class="columns">
+                <div class="column is-offset-1 is-6">
+		Get a JSON report (works only if this web page is locally installed)
+                </div>
+            </div>
+            <div class="columns">
+                <div class="column is-offset-2 is-10">
+                    <form method="POST">
+			{% csrf_token %}
+                        <div class="field has-addons">
+                            <div class="control">
+                                <button class="button is-info" style="background-color:orange">
+                                     <a href="{% url 'get_json_report:empty' %}">Generate new report</a>
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+
+    </section>
+
+    <footer class="footer">
+    dedicated for introducing the comparison app
+    <br>
+    created by Jann Demond, Gramoz Sejfijaj and Mathias Schäfer
+    </footer>
+</body>
+</html>
