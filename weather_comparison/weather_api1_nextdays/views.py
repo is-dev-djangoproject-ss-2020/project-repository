@@ -34,6 +34,8 @@ def index(request):
                 mappingApi1(API, city, weather_data_API)
             if API.cName=='here':
                 mappingApi2(API, city, weather_data_API)
+            if API.cName == 'aerisweather':
+                mappingApi3(API, city, weather_data_API)
 
             weather_data.append(weather_data_API)
     context = {'weather_data' : weather_data,'city':cities[0] ,'form' : form}
@@ -99,3 +101,24 @@ def mappingApi2(API, city, weather_data):
         # b.save()
         weather_data.append(b)
 
+def mappingApi3(API, city, weather_data):
+
+    request = urllib.request.urlopen(
+        'https://api.aerisapi.com/forecasts/'+str(city.cLatitude)+','+str(city.cLatitude)+'?&format=json&filter=day&limit=7&client_id=9DimSV5sbyOTa5GsX0Fh4&client_secret='+API.cKey)
+    response = request.read()
+    test = json.loads(response)
+    #city_weather = response.json()
+    forcast = test['response'][0]['periods']
+    for day in forcast:
+        b = weatherDayForecast(
+            dForecasteDate=day['dateTimeISO'],
+            dCallDate=datetime.now(),
+            mTemp=weatherDetail(iMax=day['maxTempC'], iMin=day['minTempC'], iAvg=day['avgTempC']),
+            mRain=weatherDetail(iMax=day['maxHumidity'], iMin=day['minHumidity'], iAvg=day['precipMM']),
+            mWind=weatherDetail(iMax=day['windSpeedMaxKPH'], iMin=day['windSpeedMinKPH'], iAvg=day['pressureMB']),
+            cName=day['weather'],
+            cIcon=static(day['icon']),
+            mAPI=API
+        )
+        # b.save()
+        weather_data.append(b)
