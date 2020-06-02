@@ -1,0 +1,85 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>What's the weather like?</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.6.2/css/bulma.css" />
+</head>
+<body>
+    <section class="hero is-primary">
+        <div class="hero-body">
+            <div class="container">
+                <h1 class="title">
+                    What's the weather like?
+                </h1>
+                <h1 class="title">
+                    Available cities
+                </h1>
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+
+    </section>
+
+    <section class="section">
+        <div class="container">
+            <div class="columns">
+                <div class="column is-offset-4 is-4">
+                    <form method="POST">
+	            {% csrf_token %}
+                           <div class="control">
+                                <button class="button is-info" style="background-color:orange">
+                                     <a href="{% url 'forecast_evaluation:forecast_evaluation_bludenz' %}">Bludenz (AUT)</a>
+                                </button>
+                                <button class="button is-info" style="background-color:orange">
+                                     <a href="{% url 'forecast_evaluation:forecast_evaluation_madrid' %}">Madrid (ESP)</a>
+                                </button>
+                                <button class="button is-info" style="background-color:orange">
+                                     <a href="{% url 'forecast_evaluation:forecast_evaluation_oslo' %}">Oslo (NOR)</a>
+                                </button>
+                                <button class="button is-info" style="background-color:orange">
+                                     <a href="{% url 'forecast_evaluation:forecast_evaluation_paris' %}">Paris (FRA)</a>
+                                </button>
+                                <button class="button is-info" style="background-color:orange">
+                                     <a href="{% url 'forecast_evaluation:forecast_evaluation_vaduz' %}">Vaduz (LIE)</a>
+                                </button>
+                                <button class="button is-info" style="background-color:orange">
+                                     <a href="{% url 'forecast_evaluation:forecast_evaluation_zurich' %}">Zurich (SUI)</a>
+                                </button>
+                           </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container">
+            <div class="columns">
+                <div class="column is-offset-4 is-4">
+                    <form method="POST">
+	            {% csrf_token %}
+                            <div class="control">
+                                <button class="button is-info" style="background-color:orange">
+                                     <a href="{% url 'home:index' %}">Return to home page</a>
+                                </button>
+                            </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+    <footer class="footer">
+    dedicated for introducing the comparison app
+    <br>
+    created by Jann Demond, Gramoz Sejfijaj and Mathias Schäfer
+    </footer>
+</body>
+</html>
